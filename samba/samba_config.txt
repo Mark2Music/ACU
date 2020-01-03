@@ -1,0 +1,28 @@
+环境：ubuntu18.04
+使用简介：samba包含两个服务，smbd和nmbd，两个都要启动成功。
+
+一：apt install samba
+二：增加samba用户的方法：
+	useradd smbrw
+	useradd smbro
+	pdbedit -a -u smbrw
+	pdbedit -a -u smbrw
+三：重新启动两个服务，service smbd restart; service nmbd restart
+
+
+增加的配置文件的内容，/etc/samba/smb.conf
+    [Share]
+        comment = Shared Folder
+        path = /opt/samba_share
+        public = no
+        ;writable = yes
+        read only = yes
+        available = yes
+        browseable = yes
+        valid users = smbrw, smbro
+        write list = smbrw
+
+由于win10系统的缘故，导致刚开始win10无法登陆samba，解决方法如下：
+1，控制面板->程序->启动或关闭windows功能。
+2，打开cmd，敲入gpedit,进入本地组策略编辑， 计算机配置->管理模板->Lanman工作站->启动不安全的来宾登陆->已启动。
+3，做完这些后，重新启动win10系统。
