@@ -7,10 +7,11 @@
 	useradd smbro
 	pdbedit -a -u smbrw
 	pdbedit -a -u smbrw
+	使用 passwd 命令为 smbrw和smbro添加密码
 三：重新启动两个服务，service smbd restart; service nmbd restart
 
 
-增加的配置文件的内容，/etc/samba/smb.conf
+四：修改配置文件的内容，/etc/samba/smb.conf(只有这一个配置文件)
     [Share]
         comment = Shared Folder
         path = /opt/samba_share
