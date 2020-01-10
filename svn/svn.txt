@@ -1,0 +1,29 @@
+下载svn代码的准备工作：
+vi /etc/hosts; 192.168.1.83      anchuang-sdk-team
+
+下载svn代码：
+svn checkout https://xxxxxx --username=xxx --password=xxx  /local_path
+或者
+svn checkout https://xxxxxx  /local_path
+
+建立一个分支并切换到那个分支：
+svn copy https://anchuang-sdk-team/svn/parrot/ac1000-sdk https://anchuang-sdk-team/svn/parrot/ac1000-sdk-bldc_foc -m 'develop bldc foc algs'
+svn switch https://anchuang-sdk-team/svn/parrot/ac1000-sdk-bldc_foc
+
+查看所有的分支：
+svn ls https://anchuang-sdk-team/svn/parrot
+
+添加删除新文件并提交代码：
+svn add /local_file
+svn delete /local_file
+svn commit -m "add some files"
+
+更新本分支的代码至最新版本:
+svn update
+
+更新某文件至某个版本：
+svn update -r version /local_file
+比如，svn update -r 200 ./test.txt ->更新test.txt至200版本
+
+
+
